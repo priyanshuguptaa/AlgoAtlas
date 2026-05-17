@@ -17,13 +17,17 @@ A complete, interactive study tool to master Data Structures & Algorithms for FA
 - **Google Sheets sync** (optional) – save your progress to a private sheet and resume anywhere.
 
 ## 📂 Project Structure
+
+```text
 .
-├── index.html # Main UI structure
-├── styles.css # Modern styling (glassmorphism, dark mode)
-├── app.js # Core logic (patterns, state, localStorage, sync)
-├── google-apps-script.gs # Backend script for Google Sheets sync
-├── GOOGLE_SHEETS_SETUP.md # Step‑by‑step sync configuration
-└── README.md # This file
+├── index.html              # Main UI structure
+├── styles.css              # Modern styling (glassmorphism, dark mode)
+├── app.js                  # Core logic (patterns, state, localStorage, sync)
+├── google-apps-script.gs   # Backend script for Google Sheets sync
+├── GOOGLE_SHEETS_SETUP.md  # Step-by-step sync configuration
+└── favicon.ico               # favicon image
+└── README.md               # This file
+```
 
 
 ## 🚀 Getting Started
