@@ -1,4 +1,4 @@
-# 🧠 FAANG DSA Pattern Vault
+# 🧠 AlgoAtlas
 
 **34 Patterns · 680+ LeetCode Problems · Progress Tracking · Google Sheets Sync**
 
