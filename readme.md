@@ -4,7 +4,7 @@
 
 A complete, interactive study tool to master Data Structures & Algorithms for FAANG‑level interviews. Each pattern includes 15–30 hand‑picked LeetCode problems (easy/medium/hard), with checkboxes, custom tags, notes, video links, and a real‑time analytics dashboard.
 
-![Preview](https://via.placeholder.com/800x400?text=DSA+Pattern+Vault)
+
 
 ## ✨ Features
 
