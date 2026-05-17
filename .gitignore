@@ -1,0 +1,56 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE / editor files
+.vscode/
+.idea/
+*.sublime-*
+.project
+.classpath
+.settings/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Local environment / secrets (if any)
+.env
+.env.local
+.secrets
+
+# Node modules (if you ever add a build step)
+node_modules/
+
+# Build outputs (not applicable yet, but future‑proof)
+dist/
+build/
+*.min.js
+*.bundle.js
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Google Apps Script local cache (if using clasp)
+.clasp.json
+.clasp/
+src/.clasp.json
+
+# Local storage dumps (if any)
+progress_backup.json
+
+# Ignore the synced Google Sheets URL config (keep example, but ignore real keys)
+# app.js contains SHEETS_API_URL – you can keep it, but don't commit real credentials
+# If you prefer to keep your URL private, uncomment the next line:
+# app.js

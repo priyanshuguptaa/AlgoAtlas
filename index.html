@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>FAANG DSA Pattern Vault | 34 Patterns | 680 LeetCode Problems</title>
+  <title>FAANG DSA Pattern Vault | 34 Patterns | 680+ LeetCode Problems</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/tabler-icons.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="app-container">
   <div class="header-stats">
     <div style="display: flex; align-items: center; gap: 12px;">
       <i class="ti ti-code" style="font-size: 28px; color: #3b82f6;"></i>
-      <h1>FAANG DSA Pattern Vault | 34 Patterns | 680 LeetCode Problems</h1>
+      <h1>FAANG DSA Pattern Vault<br><span style="font-size: 0.75rem; font-weight: normal; background: none; color: #475569;">34 Patterns · 680+ LeetCode Problems</span></h1>
     </div>
     <div class="stats-group">
       <div class="stat-badge"><i class="ti ti-checks"></i> <span id="totalSolved">0</span> / <span id="totalProblems">0</span> solved</div>
@@ -25,7 +26,7 @@
       <span>Night</span>
     </button>
     <div class="chart-wrapper">
-      <canvas id="progressChart" width="180" height="80" style="max-width: 150px;"></canvas>
+      <canvas id="progressChart" width="180" height="80" style="max-width: 140px;"></canvas>
     </div>
   </div>
 
@@ -33,7 +34,7 @@
     <div class="patterns-panel">
       <div class="search-section">
         <i class="ti ti-search" style="color:#6c86a3;"></i>
-        <input type="text" id="globalSearch" placeholder="Search patterns, problems, topics..." autocomplete="off">
+        <input type="text" id="globalSearch" placeholder="🔍 Search patterns, problems, topics..." autocomplete="off">
       </div>
       <div id="phasesContainer"></div>
     </div>
@@ -44,10 +45,10 @@
           <div><i class="ti ti-list-details"></i> <strong id="selectedPatternName">Select a pattern</strong></div>
           <div class="text-small" id="patternStats">0/0 problems</div>
         </div>
-        <div class="text-small" style="margin-top: 6px;">Check off problems to update progress. Add tags, notes, and video links as you study.</div>
+        <div class="text-small" style="margin-top: 8px;">✔️ check problems → progress updates | ✏️ add custom tags, notes, video links</div>
       </div>
       <div id="problemListContainer" class="problem-list">
-        <div class="empty-state">Click any pattern card to see FAANG-level curated problems</div>
+        <div class="empty-state">✨ Click any pattern card to see FAANG-level curated problems</div>
       </div>
     </div>
   </div>
