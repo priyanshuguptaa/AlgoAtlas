@@ -1,4 +1,4 @@
-﻿﻿const THEME_KEY = "dsa_faang_theme";
+﻿﻿﻿﻿const THEME_KEY = "dsa_faang_theme";
 const STATE_KEY = "dsa_faang_state";
 const SHEETS_API_URL = "";
 const SYNC_STATUS_ID = "syncStatus";
@@ -552,13 +552,13 @@ function renderProblemList(pattern){
   if(!container) return;
 
   if(!pattern){
-    container.innerHTML = '<div class="empty-state">Select a pattern to start solving</div>';
+    container.innerHTML = '<div class="empty-state">📌 Select a pattern to start solving</div>';
     if(selectedName) selectedName.innerText = "No pattern selected";
     if(patternStats) patternStats.innerText = "0/0";
     return;
   }
 
-  if(selectedName) selectedName.innerHTML = `<i class="ti ti-puzzle"></i> ${escapeHtml(pattern.name)}`;
+  if(selectedName) selectedName.innerHTML = `🧩 ${escapeHtml(pattern.name)}`;
   let solved = pattern.problems.filter(p => p.completed).length;
   if(patternStats) patternStats.innerHTML = `${solved}/${pattern.problems.length} solved`;
 
@@ -569,12 +569,25 @@ function renderProblemList(pattern){
       .filter(t => !["easy", "medium", "hard"].includes(t))
       .map(t => `<span class="tag">${escapeHtml(t)}</span>`)
       .join("");
-    let noteIcon = prob.notes ? `<i class="ti ti-note" style="color:#3b82f6;"></i>` : `<i class="ti ti-note-off"></i>`;
-    let cleanVideoUrl = safeExternalUrl(prob.videoUrl);
-    let videoIcon = cleanVideoUrl ? `<a href="${escapeHtml(cleanVideoUrl)}" target="_blank" rel="noopener noreferrer" class="ti ti-brand-youtube" style="color:#dc2626;"></a>` : `<i class="ti ti-video-off"></i>`;
+
+    // Use pure emojis – no external fonts needed
+    let noteEmoji = prob.notes ? "📝" : "📄";
+    let videoEmoji = prob.videoUrl ? "🎥" : "🎬";
+    let tagEmoji = "🏷️";
+
     let escapedProbId = escapeJsString(prob.id);
 
-    html += `<div class="problem-row"><div class="prob-check"><input type="checkbox" ${prob.completed ? "checked" : ""} onchange="toggleProblemCompletedById(${pattern.id},'${escapedProbId}')"></div><div class="prob-title"><a href="${escapeHtml(prob.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(prob.title)} <i class="ti ti-external-link" style="font-size:12px;"></i></a></div><div class="difficulty ${diffClass}">${escapeHtml(prob.difficulty)}</div><div class="tag-group">${tagsHtml}</div><div class="inline-edit"><button onclick="promptTag(${pattern.id},'${escapedProbId}')"><i class="ti ti-tag"></i></button><button onclick="promptNote(${pattern.id},'${escapedProbId}')">${noteIcon}</button><button onclick="promptVideo(${pattern.id},'${escapedProbId}')">${videoIcon}</button></div></div>`;
+    html += `<div class="problem-row">
+      <div class="prob-check"><input type="checkbox" ${prob.completed ? "checked" : ""} onchange="toggleProblemCompletedById(${pattern.id},'${escapedProbId}')"></div>
+      <div class="prob-title"><a href="${escapeHtml(prob.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(prob.title)} 🔗</a></div>
+      <div class="difficulty ${diffClass}">${escapeHtml(prob.difficulty)}</div>
+      <div class="tag-group">${tagsHtml}</div>
+      <div class="inline-edit">
+        <button onclick="promptTag(${pattern.id},'${escapedProbId}')" title="Add or edit tags">${tagEmoji}</button>
+        <button onclick="promptNote(${pattern.id},'${escapedProbId}')" title="Add or edit note">${noteEmoji}</button>
+        <button onclick="promptVideo(${pattern.id},'${escapedProbId}')" title="Add or edit video URL">${videoEmoji}</button>
+      </div>
+    </div>`;
   });
 
   container.innerHTML = html;
