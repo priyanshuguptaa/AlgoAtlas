@@ -311,7 +311,7 @@ h1 {
   top: 24px;
   max-height: calc(100vh - 60px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-  overflow-x: hidden;           /* FIX: no horizontal scroll on panel */
+  overflow-x: hidden;
 }
 
 .problem-header {
@@ -325,12 +325,12 @@ h1 {
   padding: 8px 0;
   flex: 1;
   overflow-y: auto;
-  overflow-x: hidden;           /* FIX: no horizontal scroll inside list */
+  overflow-x: hidden;
 }
 
 .problem-row {
   display: flex;
-  flex-wrap: wrap;              /* FIX: allow wrapping */
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
@@ -351,7 +351,7 @@ h1 {
 
 .prob-title {
   flex: 2;
-  min-width: 140px;             /* FIX: allows shrinking, prevents overflow */
+  min-width: 140px;
   font-size: 0.9rem;
   font-weight: 500;
   word-break: break-word;
@@ -410,29 +410,37 @@ h1 {
   white-space: nowrap;
 }
 
+/* --- IMPROVED INLINE-EDIT BUTTONS (always visible) --- */
 .inline-edit {
+  display: flex;
+  gap: 6px;
   flex-shrink: 0;
-  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 40px;
+  padding: 4px 10px;
+  backdrop-filter: blur(2px);
 }
 .inline-edit button {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #64748b;
-  margin: 0 6px;
-  transition: all 0.2s;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 30px;
+  width: 32px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 .inline-edit button:hover {
+  background: #ffffff;
+  border-color: #3b82f6;
   color: #2563eb;
-  background: #eef2ff;
   transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .empty-state {
@@ -514,12 +522,18 @@ body.night-mode .problem-row:hover {
 body.night-mode .prob-title a {
   color: #e2edff;
 }
+body.night-mode .inline-edit {
+  background: rgba(30, 41, 59, 0.7);
+}
 body.night-mode .inline-edit button {
-  color: #9eb0cf;
+  background: #1e293b;
+  border-color: #3b4a6b;
+  color: #a5b4fc;
 }
 body.night-mode .inline-edit button:hover {
-  background: #1f2f48;
-  color: #7ba7ff;
+  background: #2d3a5e;
+  border-color: #60a5fa;
+  color: #bfdbfe;
 }
 
 /* RESPONSIVE */

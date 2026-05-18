@@ -1,4 +1,4 @@
-﻿  const THEME_KEY = "dsa_faang_theme";
+﻿﻿  const THEME_KEY = "dsa_faang_theme";
   const SHEETS_API_URL = "";
   const SYNC_STATUS_ID = "syncStatus";
   let chart;
@@ -283,12 +283,32 @@
     let html = '';
     pattern.problems.forEach((prob,idx)=>{
       let diffClass = prob.difficulty;
-      let tagsHtml = prob.tags.filter(t => !['easy','medium','hard'].includes(t)).map(t=>`<span class="tag">${t}</span>`).join('');
+      let tagsHtml = prob.tags.filter(t => !['easy','medium','hard'].includes(t)).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join('');
       let noteIcon = prob.notes ? `<i class="ti ti-note" style="color:#3b82f6;"></i>` : `<i class="ti ti-note-off"></i>`;
-      let videoIcon = prob.videoUrl ? `<a href="${prob.videoUrl}" target="_blank" class="ti ti-brand-youtube" style="color:#dc2626;"></a>` : `<i class="ti ti-video-off"></i>`;
-      html += `<div class="problem-row"><div class="prob-check"><input type="checkbox" ${prob.completed?'checked':''} onchange="toggleProblemCompletedById(${pattern.id},'${prob.id}')"></div><div class="prob-title"><a href="${prob.url}" target="_blank">${prob.title} <i class="ti ti-external-link" style="font-size:12px;"></i></a></div><div class="difficulty ${diffClass}">${prob.difficulty}</div><div class="tag-group">${tagsHtml}</div><div class="inline-edit"><button onclick="promptTag(${pattern.id},'${prob.id}')"><i class="ti ti-tag"></i></button><button onclick="promptNote(${pattern.id},'${prob.id}')">${noteIcon}</button><button onclick="promptVideo(${pattern.id},'${prob.id}')">${videoIcon}</button></div></div>`;
+      let videoIcon = prob.videoUrl ? `<a href="${prob.videoUrl}" target="_blank" class="ti ti-brand-youtube" style="color:#dc2626; text-decoration:none;"></a>` : `<i class="ti ti-video-off"></i>`;
+      html += `<div class="problem-row">
+        <div class="prob-check"><input type="checkbox" ${prob.completed?'checked':''} onchange="toggleProblemCompletedById(${pattern.id},'${prob.id}')"></div>
+        <div class="prob-title"><a href="${prob.url}" target="_blank">${escapeHtml(prob.title)} <i class="ti ti-external-link" style="font-size:12px;"></i></a></div>
+        <div class="difficulty ${diffClass}">${prob.difficulty}</div>
+        <div class="tag-group">${tagsHtml}</div>
+        <div class="inline-edit">
+          <button onclick="promptTag(${pattern.id},'${prob.id}')" title="Add or edit tags"><i class="ti ti-tag"></i></button>
+          <button onclick="promptNote(${pattern.id},'${prob.id}')" title="Add or edit note">${noteIcon}</button>
+          <button onclick="promptVideo(${pattern.id},'${prob.id}')" title="Add or edit video URL">${videoIcon}</button>
+        </div>
+      </div>`;
     });
     container.innerHTML = html;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
   }
 
   window.toggleProblemCompletedById = (pid, probId) => { let pat = patternsLibrary.find(p=>p.id===pid); let prob = pat.problems.find(p=>p.id===probId); if(prob) toggleProblemCompleted(pat,prob); };
@@ -309,7 +329,3 @@
   document.getElementById('themeToggle').addEventListener('click', toggleTheme);
   document.getElementById('globalSearch').addEventListener('input',()=>renderAllPatterns());
   loadState();
-
-
-
-
